@@ -1,7 +1,17 @@
 # 2. projektni zadatak
 
 from datetime import date
-
+# # TELEFONI # #
+telefoni = []
+broj_telefona = int(input("Unesite broj telefona: "))
+for i in range(broj_telefona):
+    telefon = {}
+    j = i + 1
+    telefon['pozivni_broj'] = int(input(f"Unesite pozivni broj {j}. telefona: "))
+    telefon['broj'] = int(input(f"Unesite broj {j}. telefona: "))
+    telefon['proizvodac'] = input(f"Unesite naziv proizvodaca: ").strip()
+    telefoni.append(telefon)
+# # # # #
 # # KORISNICI # #
 korisnici = []
 broj_korisnika = int(input("Unesite broj korisnika: "))
@@ -10,8 +20,13 @@ for i in range(broj_korisnika):
     j = i + 1
     korisnik['ime'] = input(f"Unesite ime {j}. korisnika: ").capitalize()
     korisnik['prezime'] = input(f"Unesite prezime {j}. korisnika: ").capitalize()
-    korisnik['telefon'] = int(input(f"Unesite telefon {j}. korisnika: "))
+    # korisnik['telefon'] = int(input(f"Unesite telefon {j}. korisnika: "))
     korisnik['email'] = input(f"Unesite email {j}. korisnika: ").strip()
+    print("Dostupni brojevi telefona:")
+    for index, telefon in enumerate(telefoni, start=1):
+        print(f"\t{index}. {telefon['proizvodac']} {telefon['pozivni_broj']} {telefon['broj']}")
+    odabir_telefona = int(input("Odabrani telefon: "))
+    korisnik['telefon'] = telefoni[odabir_telefona - 1]
     korisnici.append(korisnik)
 # # # # #
 # # KATEGORIJE # #
@@ -66,7 +81,9 @@ for index, prodaja in enumerate(prodaje, start=1):
     print("Informacije o korisniku:" +
           f"\n\tIme:{prodaja['korisnik']['ime']}" +
           f"\n\tPrezime:{prodaja['korisnik']['prezime']}" +
-          f"\n\tTelefon:+{prodaja['korisnik']['telefon']}" +
+          f"\n\tTelefon:+{prodaja['korisnik']['telefon']['pozivni_broj']}" +
+          f" {prodaja['korisnik']['telefon']['broj']}" +
+          f" {prodaja['korisnik']['telefon']['proizvodac']}" +
           f"\n\tEmail:{prodaja['korisnik']['email']}")
     print("Informacije o artiklu:" +
           f"\n\tNaslov: {prodaja['artikl']['naslov']}" +
