@@ -9,4 +9,4 @@ def ispis_korisnika(korisnik):
 
 
 def get_korisnik(index, korisnik):
-    return f"{index}. {korisnik['ime']} {korisnik['prezime']}"
+    print(f"\t{index}. {korisnik['ime']} {korisnik['prezime']}")

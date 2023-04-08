@@ -8,4 +8,4 @@ def ispis_artikla(artikl):
 
 
 def get_artikl(index, artikl):
-    return f"{index}. {artikl['naslov']}"
+    print(f"\t{index}. {artikl['naslov']}")

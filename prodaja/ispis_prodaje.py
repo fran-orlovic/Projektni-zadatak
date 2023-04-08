@@ -1,12 +1,15 @@
+from korisnik import ispis_korisnika
+from artikl import ispis_artikla
 
 
-def ispis_korisnika(korisnik):
+def ispis_prodaje(prodaja):
 
-    print(f"\tIme: {korisnik['ime']}")
-    print(f"\tPrezime: {korisnik['prezime']}")
-    print(f"\tTelefon: {korisnik['telefon']}")
-    print(f"\tEmail: {korisnik['email']}")
-
-
-def get_korisnik(index, korisnik):
-    return f"{index}. {korisnik['ime']} {korisnik['prezime']}"
+    print("Informacije o korisniku:")
+    ispis_korisnika(prodaja['korisnik'])
+    print("Informacije o artiklu:")
+    ispis_artikla(prodaja['artikl'])
+    print("Datum isteka:")
+    print(f"\tDan: {prodaja['datum'].day}")
+    print(f"\tMjesec: {prodaja['datum'].month}")
+    print(f"\tGodina: {prodaja['datum'].year}")
+    print("----------------------------------------")
