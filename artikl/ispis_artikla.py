@@ -2,6 +2,7 @@
 
 def ispis_artikla(artikl):
 
+    print("Informacije o artiklu:")
     print(f"\tNaslov: {artikl['naslov']}")
     print(f"\tOpis: {artikl['opis']}")
     print(f"\tCijena: {artikl['cijena']}")
