@@ -54,6 +54,17 @@ def unos_datuma(poruka):
             return datum
 
 
+def unos_emaila(poruka):
+    while True:
+        try:
+            email = input(f"{poruka}")
+            email.index('@')
+        except ValueError:
+            print("Molim Vas unesite email koji sadrži znak @")
+        else:
+            return email
+
+
 def unos_intervala(x, y):
     while True:
         try:

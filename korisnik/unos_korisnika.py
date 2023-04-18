@@ -1,4 +1,4 @@
-from utilities import unos_pozitivnog_cijelog_broja
+from utilities import unos_pozitivnog_cijelog_broja, unos_emaila
 
 
 def unos_korisnika(index):
@@ -8,6 +8,6 @@ def unos_korisnika(index):
     korisnik['ime'] = input(f"Unesite ime {index}. korisnika: ").capitalize()
     korisnik['prezime'] = input(f"Unesite prezime {index}. korisnika: ").capitalize()
     korisnik['telefon'] = unos_pozitivnog_cijelog_broja(f"Unesite telefon {index}. korisnika:")
-    korisnik['email'] = input(f"Unesite email {index}. korisnika: ").strip()
+    korisnik['email'] = unos_emaila(f"Unesite email {index}. korisnika: ")
 
     return korisnik
