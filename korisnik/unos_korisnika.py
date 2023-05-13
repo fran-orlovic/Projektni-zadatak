@@ -1,16 +1,28 @@
 from utilities import unos_pozitivnog_cijelog_broja, unos_emaila
-from .korisnik import Korisnik
-from zdravstvena import unos_zdravstvene
+from utilities import unos_intervala
+from .privatni_korisnik import PrivatniKorisnik
+from .poslovni_korisnik import PoslovniKorisnik
+from .tip_korisnika import TipKorisnika
 
 
 def unos_korisnika(index):
 
-    ime = input(f"Unesite ime {index}. korisnika: ").capitalize()
-    prezime = input(f"Unesite prezime {index}. korisnika: ").capitalize()
     telefon = unos_pozitivnog_cijelog_broja(f"Unesite telefon {index}. korisnika:")
     email = unos_emaila(f"Unesite email {index}. korisnika: ")
-    zdravstvena = unos_zdravstvene(index)
 
-    korisnik = Korisnik(ime, prezime, email, telefon, zdravstvena)
+    print("Tipovi korisnika:")
+    for i, tip_korisnika in enumerate(TipKorisnika, start=1):
+        print(f"\t{i}. {tip_korisnika.value}")
+
+    odabir_tipa = unos_intervala(1, len(TipKorisnika))
+
+    if odabir_tipa == 1:
+        naziv = input(f"Unesite naziv {index}. korisnika: ").capitalize()
+        web = input(f"Unesite web {index}. korisnika: ")
+        korisnik = PoslovniKorisnik(naziv, web, email, telefon)
+    else:
+        ime = input(f"Unesite ime {index}. korisnika: ").capitalize()
+        prezime = input(f"Unesite prezime {index}. korisnika: ").capitalize()
+        korisnik = PrivatniKorisnik(ime, prezime, email, telefon)
 
     return korisnik
