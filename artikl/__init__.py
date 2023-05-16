@@ -3,3 +3,5 @@ from .ispis_artikla import get_artikl
 from .artikl import Artikl
 from .automobil import Automobil
 from .stan import Stan
+from .instrukcije import Instrukcije
+from .usluga import Usluga
