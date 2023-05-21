@@ -136,9 +136,13 @@ class App(QtWidgets.QMainWindow):
             if self.tip_korisnika.currentText() == TipKorisnika.POSLOVNI.value:
                 korisnici.append(PoslovniKorisnik(self.text_telefon.text(), self.text_email.text(),
                                                   self.text_naziv.text(), self.text_web.text()))
+                trenutni_korisnik = PoslovniKorisnik(self.text_telefon.text(), self.text_email.text(),
+                                                     self.text_naziv.text(), self.text_web.text())
             elif self.tip_korisnika.currentText() == TipKorisnika.PRIVATNI.value:
                 korisnici.append(PrivatniKorisnik(self.text_telefon.text(), self.text_email.text(),
                                                   self.text_ime.text(), self.text_prezime.text()))
+                trenutni_korisnik = PrivatniKorisnik(self.text_telefon.text(), self.text_email.text(),
+                                                     self.text_ime.text(), self.text_prezime.text())
 
             self.text_ime.setText('')
             self.text_prezime.setText('')
@@ -148,9 +152,7 @@ class App(QtWidgets.QMainWindow):
             self.text_email.setText('')
             self.label_error.setText('')
 
-            for korisnik in korisnici:
-                korisnik.ispis()
-
+            trenutni_korisnik.ispis()
         else:
             self.label_error.setText(error)
 
