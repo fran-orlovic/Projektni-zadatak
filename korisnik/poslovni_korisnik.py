@@ -2,7 +2,7 @@ from .korisnik import Korisnik
 
 
 class PoslovniKorisnik(Korisnik):
-    def __init__(self, naziv, web, email, telefon):
+    def __init__(self, telefon, email, naziv, web):
         super().__init__(email, telefon)
         self.__naziv = naziv
         self.__web = web
@@ -25,7 +25,7 @@ class PoslovniKorisnik(Korisnik):
 
     def ispis(self):
         print("Informacije o poslovnom korisniku:")
-        print(f"\tIme: {self.__naziv}")
-        print(f"\tPrezime: {self.__web}")
+        print(f"\tNaziv: {self.__naziv}")
+        print(f"\tWeb: {self.__web}")
         print(f"\tTelefon: {self.telefon}")
         print(f"\tEmail: {self.email}")
