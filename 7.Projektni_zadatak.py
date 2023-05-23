@@ -90,44 +90,74 @@ class App(QtWidgets.QMainWindow):
         self.text_prezime = QtWidgets.QLineEdit(self)
         self.text_prezime.setGeometry(QtCore.QRect(150, offset * 5, 150, 25))
 
+        # Label drzavljanstvo
+        self.label_drzavljanstvo = QtWidgets.QLabel(self)
+        self.label_drzavljanstvo.setFont(self.font)
+        self.label_drzavljanstvo.setText('Državljanstvo')
+        self.label_drzavljanstvo.move(50, offset * 6)
+
+        # Input drzavljanstvo
+        self.text_drzavljanstvo = QtWidgets.QLineEdit(self)
+        self.text_drzavljanstvo.setGeometry(QtCore.QRect(150, offset * 6, 150, 25))
+
         # Mora se hideat zbog pocetnog stanja
         self.label_prezime.hide()
         self.text_prezime.hide()
         self.label_ime.hide()
         self.text_ime.hide()
+        self.label_drzavljanstvo.hide()
+        self.text_drzavljanstvo.hide()
+
+        # Label oib
+        self.label_oib = QtWidgets.QLabel(self)
+        self.label_oib.setFont(self.font)
+        self.label_oib.setText('OIB')
+        self.label_oib.move(50, offset * 6)
+
+        # Input oib
+        self.text_oib = QtWidgets.QLineEdit(self)
+        self.text_oib.setGeometry(QtCore.QRect(150, offset * 6, 150, 25))
 
         # Error label
         self.label_error = QtWidgets.QLabel(self)
         self.label_error.setFont(self.font)
         self.label_error.setAlignment(QtCore.Qt.AlignCenter)
         self.label_error.setStyleSheet('color: red;')
-        self.label_error.setGeometry(QtCore.QRect(50, offset * 6, 250, 30))
+        self.label_error.setGeometry(QtCore.QRect(50, offset * 7, 250, 30))
 
         # Gumb unos korisnika
         self.unos_korisnika_button = QtWidgets.QPushButton(self)
         self.unos_korisnika_button.setText('Unesi korisnika')
-        self.unos_korisnika_button.setGeometry(QtCore.QRect(100, offset * 7, 150, 30))
+        self.unos_korisnika_button.setGeometry(QtCore.QRect(100, offset * 8, 150, 30))
         self.unos_korisnika_button.clicked.connect(self.unos_korisnika)
 
     def on_combobox_changed(self):
         if self.tip_korisnika.currentText() == TipKorisnika.POSLOVNI.value:
-            self.label_naziv.show()
-            self.text_naziv.show()
-            self.label_web.show()
-            self.text_web.show()
             self.label_ime.hide()
             self.text_ime.hide()
             self.label_prezime.hide()
             self.text_prezime.hide()
+            self.label_drzavljanstvo.hide()
+            self.text_drzavljanstvo.hide()
+            self.label_naziv.show()
+            self.text_naziv.show()
+            self.label_web.show()
+            self.text_web.show()
+            self.label_oib.show()
+            self.text_oib.show()
         elif self.tip_korisnika.currentText() == TipKorisnika.PRIVATNI.value:
             self.label_naziv.hide()
             self.text_naziv.hide()
             self.label_web.hide()
             self.text_web.hide()
+            self.label_oib.hide()
+            self.text_oib.hide()
             self.label_ime.show()
             self.text_ime.show()
             self.label_prezime.show()
             self.text_prezime.show()
+            self.label_drzavljanstvo.show()
+            self.text_drzavljanstvo.show()
 
     def unos_korisnika(self):
         error = provjera_informacija(self.text_telefon.text(), self.text_email.text())
@@ -135,14 +165,12 @@ class App(QtWidgets.QMainWindow):
         if error is None:
             if self.tip_korisnika.currentText() == TipKorisnika.POSLOVNI.value:
                 korisnici.append(PoslovniKorisnik(self.text_telefon.text(), self.text_email.text(),
-                                                  self.text_naziv.text(), self.text_web.text()))
-                trenutni_korisnik = PoslovniKorisnik(self.text_telefon.text(), self.text_email.text(),
-                                                     self.text_naziv.text(), self.text_web.text())
+                                                  self.text_naziv.text(), self.text_web.text(),
+                                                  self.text_oib.text()))
             elif self.tip_korisnika.currentText() == TipKorisnika.PRIVATNI.value:
                 korisnici.append(PrivatniKorisnik(self.text_telefon.text(), self.text_email.text(),
-                                                  self.text_ime.text(), self.text_prezime.text()))
-                trenutni_korisnik = PrivatniKorisnik(self.text_telefon.text(), self.text_email.text(),
-                                                     self.text_ime.text(), self.text_prezime.text())
+                                                  self.text_ime.text(), self.text_prezime.text(),
+                                                  self.text_drzavljanstvo.text()))
 
             self.text_ime.setText('')
             self.text_prezime.setText('')
@@ -150,9 +178,12 @@ class App(QtWidgets.QMainWindow):
             self.text_web.setText('')
             self.text_telefon.setText('')
             self.text_email.setText('')
+            self.text_oib.setText('')
+            self.text_drzavljanstvo.setText('')
             self.label_error.setText('')
 
-            trenutni_korisnik.ispis()
+            korisnik = korisnici[len(korisnici) - 1]
+            korisnik.ispis()
         else:
             self.label_error.setText(error)
 
