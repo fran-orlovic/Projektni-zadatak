@@ -7,8 +7,9 @@ class Stan(Artikl):
         self.kvadratura = kvadratura
 
     def ispis(self):
-        print(f"Informacije o stanu:")
-        print(f"\tNaslov: {self.naslov}")
-        print(f"\tOpis: {self.opis}")
-        print(f"\tCijena: {self.cijena}")
-        print(f"\tKvadratura: {self.kvadratura}")
+        # print(f"Informacije o stanu:")
+        # print(f"\tNaslov: {self.naslov}")
+        # print(f"\tOpis: {self.opis}")
+        # print(f"\tCijena: {self.cijena}")
+        # print(f"\tKvadratura: {self.kvadratura}")
+        return f'{self.naslov}, {self.opis}, {self.cijena}, {self.kvadratura}'

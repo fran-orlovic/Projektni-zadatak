@@ -6,10 +6,11 @@ class Prodaja:
         self.artikl = artikl
 
     def ispis(self):
-        self.korisnik.ispis()
-        self.artikl.ispis()
-        print("Datum isteka:")
-        print(f"\tDan: {self.datum.day}")
-        print(f"\tMjesec: {self.datum.month}")
-        print(f"\tGodina: {self.datum.year}")
-        print("---------------------")
+        # self.korisnik.ispis()
+        # self.artikl.ispis()
+        # print("Datum isteka:")
+        # print(f"\tDan: {self.datum.day}")
+        # print(f"\tMjesec: {self.datum.month}")
+        # print(f"\tGodina: {self.datum.year}")
+        # print("---------------------")
+        return f'{self.korisnik.email}: {self.artikl.naslov}'

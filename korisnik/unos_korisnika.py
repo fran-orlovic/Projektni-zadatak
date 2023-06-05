@@ -16,13 +16,13 @@ def unos_korisnika(index):
 
     odabir_tipa = unos_intervala(1, len(TipKorisnika))
 
-    if odabir_tipa == 1:
+    if odabir_tipa == 2:
         naziv = input(f"Unesite naziv {index}. korisnika: ").capitalize()
         web = input(f"Unesite web {index}. korisnika: ")
-        korisnik = PoslovniKorisnik(naziv, web, email, telefon)
+        korisnik = PoslovniKorisnik(telefon, email, naziv, web)
     else:
         ime = input(f"Unesite ime {index}. korisnika: ").capitalize()
         prezime = input(f"Unesite prezime {index}. korisnika: ").capitalize()
-        korisnik = PrivatniKorisnik(ime, prezime, email, telefon)
+        korisnik = PrivatniKorisnik(telefon, email, ime, prezime)
 
     return korisnik

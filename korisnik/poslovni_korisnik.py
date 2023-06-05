@@ -2,11 +2,11 @@ from .korisnik import Korisnik
 
 
 class PoslovniKorisnik(Korisnik):
-    def __init__(self, telefon, email, naziv, web, oib):
+    def __init__(self, telefon, email, naziv, web):
         super().__init__(email, telefon)
         self.__naziv = naziv
         self.__web = web
-        self.oib = oib
+        # self.oib = oib
 
     @property
     def naziv(self):
@@ -25,9 +25,10 @@ class PoslovniKorisnik(Korisnik):
         self.__web = web
 
     def ispis(self):
-        print("Informacije o poslovnom korisniku:")
-        print(f"\tNaziv: {self.__naziv}")
-        print(f"\tWeb: {self.__web}")
-        print(f"\tTelefon: {self.telefon}")
-        print(f"\tEmail: {self.email}")
-        print(f"\tOIB: {self.oib}")
+        # print("Informacije o poslovnom korisniku:")
+        # print(f"\tNaziv: {self.__naziv}")
+        # print(f"\tWeb: {self.__web}")
+        # print(f"\tTelefon: {self.telefon}")
+        # print(f"\tEmail: {self.email}")
+        # print(f"\tOIB: {self.oib}")
+        return f"{self.naziv}, {self.web}: {self.telefon}, {self.email}"

@@ -5,3 +5,4 @@ from .automobil import Automobil
 from .stan import Stan
 from .instrukcije import Instrukcije
 from .usluga import Usluga
+from .tip_artikla import TipArtikla
